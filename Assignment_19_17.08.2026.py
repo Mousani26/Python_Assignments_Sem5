@@ -49,7 +49,6 @@ class Scalene(Triangle):
         return area
 
     def findAngles(self):
-        # Angle 1 opposite side1
         self.angle1 = math.degrees(
             math.acos(
                 (self.side2**2 + self.side3**2 - self.side1**2)
@@ -57,7 +56,6 @@ class Scalene(Triangle):
             )
         )
 
-        # Angle 2 opposite side2
         self.angle2 = math.degrees(
             math.acos(
                 (self.side1**2 + self.side3**2 - self.side2**2)
@@ -65,7 +63,6 @@ class Scalene(Triangle):
             )
         )
 
-        # Angle 3 opposite side3
         self.angle3 = 180 - self.angle1 - self.angle2
 
         print("Tangent of angle 1 =", math.tan(math.radians(self.angle1)))
