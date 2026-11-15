@@ -1,0 +1,35 @@
+'''
+Import 'Titanic' dataset in a CSV file from Kaggle and perform the following operations on the dataset:
+1. Clean the dataset and print the resultant dataset.
+2. Find out the details of the passengers whose age is more than 40 and category is female.
+3. Describe the dataset for the passengers of class 1.
+4. Remove the duplicate values if any in passenger id.
+5. Insert a column name in the given dataset.
+'''
+
+import pandas as pd
+
+# Import the Titanic dataset from a CSV file
+df = pd.read_csv('titanic.csv')
+
+# 1) Clean the dataset (handle missing values) and print the resultant dataset
+df['Age'] = df['Age'].fillna(df['Age'].median())
+df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])
+df_cleaned = df.drop(columns=['Cabin'])
+print("Cleaned Dataset:\n", df_cleaned.head())
+
+# 2) Find details of passengers whose age is more than 40 and category (Sex) is female
+older_females = df_cleaned[(df_cleaned['Age'] > 40) & (df_cleaned['Sex'] == 'female')]
+print("\nFemale passengers older than 40:\n", older_females)
+
+# 3) Describe the dataset for passengers of Class 1 (Pclass == 1)
+class_1_desc = df_cleaned[df_cleaned['Pclass'] == 1].describe()
+print("\nStatistical summary for Class 1 passengers:\n", class_1_desc)
+
+# 4) Remove duplicate values, if any, based on 'PassengerId'
+df_cleaned = df_cleaned.drop_duplicates(subset=['PassengerId'])
+print("\nDataset shape after removing duplicates:", df_cleaned.shape)
+
+# 5) Insert a new column in the dataset (e.g., 'FamilySize' at index 5)
+df_cleaned.insert(loc=5, column='FamilySize', value=df_cleaned['SibSp'] + df_cleaned['Parch'] + 1)
+print("\nDataset with new column:\n", df_cleaned.head())
