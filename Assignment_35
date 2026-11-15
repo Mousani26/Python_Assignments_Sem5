@@ -1,0 +1,33 @@
+'''
+Write a Python program using the Pandas library to create a Series of 10 grocery products with their prices. Perform the following operations:
+1. Print all the products along with their names and prices.
+2. Calculate and display the average price of all products.
+3. Print the names and prices of products whose prices are greater than the average price.
+4. Print the names and prices of products whose prices are greater than ₹50.
+'''
+
+
+import pandas as pd
+
+# Create a Series of 10 grocery products with prices
+products = pd.Series(
+    [40, 60, 25, 80, 100, 35, 55, 120, 45, 70],
+    index=['Rice', 'Oil', 'Salt', 'Sugar', 'Ghee',
+           'Milk', 'Bread', 'Dry Fruits', 'Tea', 'Coffee']
+)
+
+# 1. Print all products with prices
+print("All Grocery Products and Prices:")
+print(products)
+
+# 2. Calculate average price
+avg = products.mean()
+print("\nAverage Price:", avg)
+
+# 3. Products whose price is more than average
+print("\nProducts with Price Greater than Average:")
+print(products[products > avg])
+
+# 4. Products whose price is more than 50
+print("\nProducts with Price Greater than Rs. 50:")
+print(products[products > 50])
