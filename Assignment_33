@@ -1,0 +1,26 @@
+'''
+Write a Python program to implement the Chi-Square Test using the SciPy library. 
+Consider the observed frequencies of four categories as [50, 30, 20, 40]. 
+Test whether the observed frequencies differ significantly from the expected frequencies at a 5% significance level.
+'''
+
+from scipy import stats
+
+# Observed frequencies
+observed = [50, 30, 20, 40]
+
+# Expected frequencies
+expected = [35, 35, 35, 35]
+
+# Perform Chi-Square Test
+chi, p = stats.chisquare(observed, expected)
+
+# Display results
+print("Chi-Square Statistic:", chi)
+print("P-value:", p)
+
+# Hypothesis testing
+if p < 0.05:
+    print("Reject the Null Hypothesis (H0)")
+else:
+    print("Accept the Null Hypothesis (H0)")
