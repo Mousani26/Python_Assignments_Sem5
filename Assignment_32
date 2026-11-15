@@ -1,0 +1,24 @@
+'''
+Perform two sample T-test for the given datasets :
+marks1 = [12, 17, 16, 13, 14]
+marks2 = [18, 17, 16, 20, 19]
+
+'''
+
+from scipy import stats
+
+# Two datasets
+marks1 = [12, 17, 16, 13, 14]
+marks2 = [18, 17, 16, 20, 19]
+
+# Perform two-sample T-test
+t, p = stats.ttest_ind(group1, group2)
+
+print("T-statistic:", t)
+print("P-value:", p)
+
+# Check hypothesis
+if p < 0.05:
+    print("Reject the null hypothesis (H0).")
+else:
+    print("Fail to reject the null hypothesis (H0).")
