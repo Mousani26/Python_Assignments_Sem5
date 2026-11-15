@@ -1,0 +1,44 @@
+'''
+Create a Pandas DataFrame containing student details such as roll number, student name, department, and marks. Perform the following operations:
+1. Find out the columns containing null values.
+2. Fill the null value in the department column with 'CSE'.
+3. Delete the record of student 'Binita'.
+4. Update the department of 'Raju' to 'VLSI'.
+'''
+
+import pandas as pd
+
+# Create DataFrame
+data = {
+    "roll": [1, 2, 3, 4, 5],
+    "student_name": ["Anu", "Ria", "Sima", "Raju", "Binita"],
+    "dept": ["CSE", "IT", None, "ECE", None],
+    "marks": [90, None, 80, 85, 95]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+
+# 1. Find columns with null values
+print("\nColumns with Null Values:")
+print(df.columns[df.isnull().any()])
+
+# 2. Fill null values in department with CSE
+df["dept"] = df["dept"].fillna("CSE")
+
+print("\nAfter Filling Null Values:")
+print(df)
+
+# 3. Delete the record of Binita
+df = df[df["student_name"] != "Binita"]
+
+print("\nAfter Deleting Binita:")
+print(df)
+
+# 4. Update Raju's department to VLSI
+df.loc[df["student_name"] == "Raju", "dept"] = "VLSI"
+
+print("\nAfter Updating Raju's Department:")
+print(df)
