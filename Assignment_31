@@ -1,0 +1,24 @@
+'''
+Perform a one sample T-test on the given dataset against a population mean of 50 marks.
+marks = [18,15,12,20,17]
+t,p = stats.ttest_1samp(marks,50)
+If the p values is less than threshold commonly 0.05, then the population is rejected.
+'''
+
+
+from scipy import stats
+
+# Given dataset
+marks = [18, 15, 12, 20, 17]
+
+# Perform one-sample T-test against population mean of 50
+t, p = stats.ttest_1samp(marks, 50)
+
+print("T-statistic:", t)
+print("P-value:", p)
+
+# Check hypothesis
+if p < 0.05:
+    print("Reject the null hypothesis (H0).")
+else:
+    print("Fail to reject the null hypothesis (H0).")
