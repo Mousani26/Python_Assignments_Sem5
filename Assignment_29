@@ -1,0 +1,8 @@
+/// Use Scipy to calculate probability for a standard normal variable.
+
+from scipy import stats
+
+# Probability that a standard normal variable is less than 1.5
+Q = stats.norm.cdf(1.5)
+
+print("Probability:", Q)
