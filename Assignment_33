@@ -4,6 +4,7 @@ Consider the observed frequencies of four categories as [50, 30, 20, 40].
 Test whether the observed frequencies differ significantly from the expected frequencies at a 5% significance level.
 '''
 
+
 from scipy import stats
 
 # Observed frequencies
@@ -24,3 +25,33 @@ if p < 0.05:
     print("Reject the Null Hypothesis (H0)")
 else:
     print("Accept the Null Hypothesis (H0)")
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+''' 
+Write a Python program to perform a Chi-Square Test of Independence to examine whether two categorical variables are associated or independent. 
+'''
+
+
+from scipy import stats
+
+# Observed data (contingency table)
+data = [[20, 30],
+        [40, 10]]
+
+# Perform Chi-Square Test
+ch, p, dof, ef = stats.chi2_contingency(data)
+
+# Display results
+print("Chi-Square Value:", ch)
+print("P-value:", p)
+print("Degrees of Freedom:", dof)
+print("Expected Frequencies:\n", ef)
+
+# Hypothesis testing
+if p < 0.05:
+    print("Reject the Null Hypothesis")
+else:
+    print("Fail to Reject the Null Hypothesis")
