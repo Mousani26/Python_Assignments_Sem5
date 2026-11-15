@@ -1,0 +1,32 @@
+/// Write a python program using scipy to calculate descriptive statistics for marks of 10 students.///
+
+import numpy as np
+from scipy import stats
+
+# Marks of 10 students
+marks = np.array([75, 80, 85, 90, 65, 70, 80, 95, 85, 75])
+
+# Descriptive Statistics
+mean = np.mean(marks)
+median = np.median(marks)
+mode = stats.mode(marks, keepdims=True)
+variance = np.var(marks)
+std_dev = np.std(marks)
+minimum = np.min(marks)
+maximum = np.max(marks)
+range_value = np.ptp(marks)
+
+# Display Results
+print("Descriptive Statistics of Students :' Marks")
+print("Mean:", mean)
+print("Median:", median)
+print("Mode:", mode.mode[0])
+print("Variance:", variance)
+print("Standard Deviation:", std_dev)
+print("Minimum Marks:", minimum)
+print("Maximum Marks:", maximum)
+print("Range:", range_value)
+
+# Additional Statistics using SciPy
+print("Skewness:", stats.skew(marks))
+print("Kurtosis:", stats.kurtosis(marks))
